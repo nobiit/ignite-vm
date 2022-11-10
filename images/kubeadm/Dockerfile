@@ -1,7 +1,7 @@
 ARG GOARCH="amd64"
 
 # Ubuntu 20.04 was also tested, but didn't perform very well (sshd took a long time to start), so we're sticking with Ubuntu 18.04 still
-FROM weaveworks/ignite-ubuntu:18.04
+FROM weaveworks/ignite-ubuntu:20.04
 ARG GOARCH="amd64"
 ARG RELEASE
 ARG BINARY_REF
@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         curl \
         gnupg2 \
         jq \
+        conntrack \
+        iptables \
     && apt-get clean
 
 # Install k8s locally
